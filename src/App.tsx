@@ -117,27 +117,61 @@ function App() {
             ))}
           </div>
 
-          {/* 1 */}
-          <div className="line-1" />
-          <div className="line-2" />
+          <div
+            className={`line-1 ${
+              active === BusinessTypes.MEDIUMBUSINESS ? "active" : ""
+            }`}
+          />
+          <div
+            className={`line-2 ${
+              active === BusinessTypes.MEDIUMBUSINESS ? "active" : ""
+            }`}
+          />
 
-          {/* 3 */}
-          <div className="line-3" />
-          <div className="line-4" />
+          <div
+            className={`line-3 ${
+              active === BusinessTypes.ENTERPRISE ? "active" : ""
+            }`}
+          />
+          <div
+            className={`line-4 ${
+              active === BusinessTypes.ENTERPRISE ? "active" : ""
+            }`}
+          />
 
-          {/* 4 */}
-          <div className="line-5" />
-          <div className="line-6" />
+          <div
+            className={`line-5 ${
+              active === BusinessTypes.ENTERPRISE ? "active" : ""
+            }`}
+          />
+          <div
+            className={`line-6 ${
+              active === BusinessTypes.ENTERPRISE ? "active" : ""
+            }`}
+          />
 
-          {/* 6 */}
-          <div className="line-7 active" />
-          <div className="line-8 active" />
+          <div
+            className={`line-7 ${
+              active === BusinessTypes.SMALLBUSINESS ? "active" : ""
+            }`}
+          />
+          <div
+            className={`line-8 ${
+              active === BusinessTypes.SMALLBUSINESS ? "active" : ""
+            }`}
+          />
 
-          {/* 2 */}
-          <div className="line-9" />
+          <div
+            className={`line-9 ${
+              active === BusinessTypes.MEDIUMBUSINESS ? "active" : ""
+            }`}
+          />
 
-          {/* 5 */}
-          <div className="line-10" />
+          <div
+            className={`line-10 ${
+              active === BusinessTypes.ENTERPRISE ? "active" : ""
+            }`}
+          />
         </div>
       </div>
     </div>

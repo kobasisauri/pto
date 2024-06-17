@@ -11,9 +11,9 @@ export const types = [
   {
     title: "Medium Business",
     index: BusinessTypes.MEDIUMBUSINESS,
-    actives: [],
+    actives: [1, 2],
   },
-  { title: "Enterprise", index: BusinessTypes.ENTERPRISE, actives: [] },
+  { title: "Enterprise", index: BusinessTypes.ENTERPRISE, actives: [3, 4, 5] },
 ];
 
 export const items = [
