@@ -62,7 +62,7 @@ function App() {
                 </div>
 
                 <Switch
-                  active={showActive(types, active, item.id)}
+                  active={!!showActive(types, active, item.id)}
                   onClick={() =>
                     setTypes((state) =>
                       state.map((i) =>
@@ -121,7 +121,7 @@ function App() {
                 </div>
 
                 <Switch
-                  active={showActive(types, active, item.id)}
+                  active={!!showActive(types, active, item.id)}
                   onClick={() =>
                     setTypes((state) =>
                       state.map((i) =>
