@@ -3,3 +3,9 @@ export enum BusinessTypes {
   MEDIUMBUSINESS = 1,
   ENTERPRISE = 2,
 }
+
+export type Types = {
+  title: string;
+  index: BusinessTypes;
+  actives: number[];
+};

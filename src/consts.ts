@@ -6,7 +6,13 @@ export const texts = {
     "Increase job satisfaction, improve engagement, decrease burnout and lower payroll liability by reimagining what employees can do with their PTO.",
 };
 
-export const types = [
+export const personInfo = {
+  name: "Lauren Robson",
+  position: "HR Director",
+  desc: "“I want to lower PTO liability and keep my employess happy. I want to lower PTO liability.”",
+};
+
+export const initTypes = [
   { title: "Small Business", index: BusinessTypes.SMALLBUSINESS, actives: [6] },
   {
     title: "Medium Business",

@@ -1,13 +1,18 @@
 import { useState } from "react";
-import { BusinessTypes } from "./types";
-import { texts, types, items } from "./consts";
+import { BusinessTypes, Types } from "./types";
+import { texts, personInfo, initTypes, items } from "./consts";
 import "./App.css";
 import Switch from "./components/Switch";
+
+const showActive = (types: Types[], active: BusinessTypes, id: number) => {
+  return types.find((i) => i.index === active)?.actives.includes(id);
+};
 
 function App() {
   const [active, setActive] = useState<BusinessTypes>(
     BusinessTypes.SMALLBUSINESS
   );
+  const [types, setTypes] = useState(initTypes);
 
   return (
     <div className="container mx-auto py-4 flex justify-center">
@@ -40,9 +45,7 @@ function App() {
             {items.slice(0, 3).map((item) => (
               <div
                 className={`item flex items-center justify-between border-2 rounded-xl p-3 ${
-                  types
-                    .find((i) => i.index === active)
-                    ?.actives.includes(item.id)
+                  showActive(types, active, item.id)
                     ? "border-main"
                     : "border-[#E8E6EC]"
                 }`}
@@ -59,9 +62,21 @@ function App() {
                 </div>
 
                 <Switch
-                  active={types
-                    .find((i) => i.index === active)
-                    ?.actives.includes(item.id)}
+                  active={showActive(types, active, item.id)}
+                  onClick={() =>
+                    setTypes((state) =>
+                      state.map((i) =>
+                        i.index === active
+                          ? i.actives.includes(item.id)
+                            ? {
+                                ...i,
+                                actives: i.actives.filter((j) => j !== item.id),
+                              }
+                            : { ...i, actives: [...i.actives, item.id] }
+                          : i
+                      )
+                    )
+                  }
                 />
               </div>
             ))}
@@ -74,16 +89,13 @@ function App() {
 
             <div>
               <h3 className="text-center text-title text-xl font-bold">
-                Lauren Robson
+                {personInfo.name}
               </h3>
               <h4 className="text-center text-init text-[14px] mb-3.5">
-                HR Director
+                {personInfo.position}
               </h4>
 
-              <p className="text-center text-title">
-                “I want to lower PTO liability and keep my employess happy. I
-                want to lower PTO liability.”
-              </p>
+              <p className="text-center text-title">{personInfo.desc}</p>
             </div>
           </div>
           <div className="flex flex-col gap-3.5">
@@ -109,67 +121,61 @@ function App() {
                 </div>
 
                 <Switch
-                  active={types
-                    .find((i) => i.index === active)
-                    ?.actives.includes(item.id)}
+                  active={showActive(types, active, item.id)}
+                  onClick={() =>
+                    setTypes((state) =>
+                      state.map((i) =>
+                        i.index === active
+                          ? i.actives.includes(item.id)
+                            ? {
+                                ...i,
+                                actives: i.actives.filter((j) => j !== item.id),
+                              }
+                            : { ...i, actives: [...i.actives, item.id] }
+                          : i
+                      )
+                    )
+                  }
                 />
               </div>
             ))}
           </div>
 
           <div
-            className={`line-1 ${
-              active === BusinessTypes.MEDIUMBUSINESS ? "active" : ""
-            }`}
+            className={`line-1 ${showActive(types, active, 1) ? "active" : ""}`}
           />
           <div
-            className={`line-2 ${
-              active === BusinessTypes.MEDIUMBUSINESS ? "active" : ""
-            }`}
+            className={`line-2 ${showActive(types, active, 1) ? "active" : ""}`}
           />
 
           <div
-            className={`line-3 ${
-              active === BusinessTypes.ENTERPRISE ? "active" : ""
-            }`}
+            className={`line-3 ${showActive(types, active, 3) ? "active" : ""}`}
           />
           <div
-            className={`line-4 ${
-              active === BusinessTypes.ENTERPRISE ? "active" : ""
-            }`}
+            className={`line-4 ${showActive(types, active, 3) ? "active" : ""}`}
           />
 
           <div
-            className={`line-5 ${
-              active === BusinessTypes.ENTERPRISE ? "active" : ""
-            }`}
+            className={`line-5 ${showActive(types, active, 4) ? "active" : ""}`}
           />
           <div
-            className={`line-6 ${
-              active === BusinessTypes.ENTERPRISE ? "active" : ""
-            }`}
+            className={`line-6 ${showActive(types, active, 4) ? "active" : ""}`}
           />
 
           <div
-            className={`line-7 ${
-              active === BusinessTypes.SMALLBUSINESS ? "active" : ""
-            }`}
+            className={`line-7 ${showActive(types, active, 6) ? "active" : ""}`}
           />
           <div
-            className={`line-8 ${
-              active === BusinessTypes.SMALLBUSINESS ? "active" : ""
-            }`}
+            className={`line-8 ${showActive(types, active, 6) ? "active" : ""}`}
           />
 
           <div
-            className={`line-9 ${
-              active === BusinessTypes.MEDIUMBUSINESS ? "active" : ""
-            }`}
+            className={`line-9 ${showActive(types, active, 2) ? "active" : ""}`}
           />
 
           <div
             className={`line-10 ${
-              active === BusinessTypes.ENTERPRISE ? "active" : ""
+              showActive(types, active, 5) ? "active" : ""
             }`}
           />
         </div>
